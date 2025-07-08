@@ -1,1 +1,67 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Login Student";
+    Layout = "~/Views/Shared/_AccountLayout/_Account.Layout.cshtml";
+}
+@model LoginViewModel;
+
+
+
+<div asp-validation-summary="All" class="validation-summary" role="alert"></div>
+
+
+
+  <main class="login-container" role="main" aria-label="Login form for Mindoro State University">
+    <img src="/images/MinsuLogo.png" alt="Mindoro State University seal showing a green shield with a tree, sun, and yellow rays, encircled by university name and founding year" class="logo" />
+        <h2 tabindex="0">Mindoro State University</h2>
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <div class="mb-4">
+                <label for="email" class="visually-hidden">Email</label>
+                <div class="input-group">
+                <span class="input-group-text" id="email-addon" aria-hidden="true"><i class="bi bi-envelope-fill"></i></span>
+                    <input type="email" class="form-control form-control-sm"  placeholder="Email"/>
+                </div>
+          
+            </div>
+            <div class="mb-4">
+                <label for="password" class="visually-hidden">Password</label>
+                <div class="input-group">
+                <span class="input-group-text" id="password-addon" aria-hidden="true"><i class="bi bi-shield-lock-fill"></i></span>
+                <input type="password" class="form-control form-control-sm" placeholder="Password" />
+                </div>
+            </div>
+            <p class="forgot-text">Forgot your password? <a href="#" tabindex="0">Recover</a></p>
+            <button type="submit" class="btn btn-signin  w-100" aria-label="Sign in to Mindoro State University account">Sign in</button>
+            <br>
+    </form>
+             
+    </main>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const summary = document.querySelector(".validation-summary");
+
+        // Check if there's actually validation content
+        if (summary && summary.innerText.trim().length > 0) {
+            // Show the summary box
+            summary.style.display = "block";
+
+            // Add the close button only once
+            if (!summary.querySelector(".close-btn")) {
+                const closeBtn = document.createElement("button");
+                closeBtn.type = "button";
+                closeBtn.className = "close-btn";
+                closeBtn.setAttribute("aria-label", "Close");
+                closeBtn.innerHTML = "&times;";
+                summary.appendChild(closeBtn);
+
+                closeBtn.addEventListener("click", function () {
+                    summary.style.display = "none";
+                });
+            }
+        } else {
+            summary.style.display = "none";
+        }
+    });
+</script>
