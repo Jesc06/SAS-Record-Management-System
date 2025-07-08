@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <RootNamespace>SAS_Record_Management_System.Data</RootNamespace>
+    <RootNamespace>SAS_Record_Management_System.Infrastructure</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 
