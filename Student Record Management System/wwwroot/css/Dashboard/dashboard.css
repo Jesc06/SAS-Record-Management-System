@@ -2,7 +2,7 @@
     --sidebar-width: 280px;
     --sidebar-collapsed-width: 80px;
     --transition-speed: 0.3s;
-    --primary-color: #5e72e4;
+    --primary-color: black;
     --secondary-color: #f8f9fa;
     --active-color: rgba(94, 114, 228, 0.16);
 }
@@ -189,4 +189,37 @@ body {
         #main-content.expanded {
             margin-left: 0;
         }
+}
+
+.profile-popup {
+    position: absolute;
+    top: 100%;
+    right: 3.5rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    min-width: 170px;
+}
+
+    .profile-popup a.logout-btn {
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        display: block;
+    }
+
+        .profile-popup a.logout-btn:hover {
+            text-decoration: underline;
+        }
+
+.d-none {
+    display: none !important;
+}
+
+.profile-section {
+    position: relative;
+    cursor: pointer;
 }
