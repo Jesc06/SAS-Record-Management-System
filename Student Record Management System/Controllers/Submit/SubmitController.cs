@@ -2,9 +2,9 @@
 
 namespace Student_Record_Management_System.Controllers.StudentDashboard
 {
-    public class DashboardController : Controller
+    public class SubmitController : Controller
     {
-        public IActionResult Dashboard()
+        public IActionResult SubmitDocuments()
         {
             return View();
         }
