@@ -2,3 +2,158 @@
     ViewData["Title"] = "Register Student";
     Layout = "~/Views/Shared/_AccountLayout/_Account.Layout.cshtml";
 }
+
+<head>
+    <link rel="stylesheet" href="~/css/Register/Register.css"  asp-append-version="true"/>
+</head>
+
+
+
+<div class="container">
+    <div class="registration-container">
+        <div class="form-header">
+            <h2>Student Sign up Form</h2>
+            <p class="text-muted">Please fill in all required fields</p>
+        </div>
+
+        <form id="registrationForm" novalidate>
+            <!-- Full Name -->
+            <div class="row mb-3">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <label for="middleName" class="form-label">Middle Name</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <select class="form-select">
+                    <option selected disabled>Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Prefer not to say</option>
+                </select>
+            </div>
+
+            <!-- Birthdate -->
+            <div class="row mb-3">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <label for="birthYear" class="form-label">Year of Birth</label>
+                    <input type="number" class="form-control" placeholder="e.g. 2005">
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <label for="birthMonth" class="form-label">Month of Birth</label>
+                    <select class="form-select">
+                        <option selected disabled>Select Month</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="birthDate" class="form-label">Date of Birth</label>
+                    <input type="number" class="form-control" placeholder="e.g. 15">
+                </div>
+            </div>
+
+            <!-- Home Address and Mobile Number -->
+            <div class="row mb-3">
+                <div class="col-md-8 mb-3 mb-md-0">
+                    <label for="address" class="form-label">Home Address</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="mobile" class="form-label">Mobile Number</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control">
+            </div>
+
+            <!-- Program and Year Level -->
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="program" class="form-label">Program</label>
+                    <select class="form-select">
+                        <option value="" selected disabled>Select your program</option>
+                        <option value="cs">Computer Science</option>
+                        <option value="it">Information Technology</option>
+                        <option value="eng">Engineering</option>
+                        <option value="bus">Business Administration</option>
+                        <option value="nur">Nursing</option>
+                        <option value="art">Arts and Humanities</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="yearLevel" class="form-label">Year Level</label>
+                    <select class="form-select">
+                        <option value="" selected disabled>Select year level</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                        <option value="5">Fifth Year</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Student ID -->
+            <div class="mb-3">
+                <label for="studentId" class="form-label">Student ID</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <!-- Passwords -->
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control">
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a asp-action="Login" class="btn btn-outline-secondary order-2 order-md-1">Cancel</a>
+                <button type="submit" asp-action="Login" class="btn submit-btn text-white order-1 order-md-2">
+                    Sign up
+                </button>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+﻿
+.registration-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+    .form-header h2 {
+        font-weight: 600;
+    }
+
+.required-field:after {
+    content: " *";
+    color: red;
+}
+
+.submit-btn {
+    background-color: #3498db;
+    border: none;
+    padding: 10px 25px;
+    font-weight: 500;
+}
+
+    .submit-btn:hover {
+        background-color: #2980b9;
+    }

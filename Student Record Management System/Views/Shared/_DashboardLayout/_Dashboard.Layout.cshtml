@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="~/css/Dashboard/dashboard.css" rel="stylesheet" / asp-append-version="true">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="sidebar-header">
+                <span class="logo">Dashboard</span>
+                <button id="sidebarCollapse" type="button">
+                    <i class="fas fa-angle-left toggle-icon"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-content">
+                <ul class="list-unstyled">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-envelope"></i>
+                            <span>Messages</span>
+                            <span class="badge bg-danger ms-auto">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-calendar"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-users"></i>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Help</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="profile-section">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/965cd765-a659-4c6b-9980-5eb6df0a417f.png" alt="User profile photo of a professional looking business person with dark hair in a suit" class="profile-img">
+                    <div class="profile-info">
+                        <div class="profile-name">John Doe</div>
+                        <div class="profile-role">Administrator</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="main-content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 d-md-none">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" id="mobileSidebarToggle">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+
+            <h1>Main Content Area</h1>
+            <p>This content will be pushed when the sidebar collapses/expands.</p>
+            <p>Try clicking the collapse button or resize your browser to see the mobile behavior.</p>
+
+            <div class="alert alert-info mt-4">
+                <i class="fas fa-info-circle me-2"></i>
+                This is a demo of a modern responsive sidebar with collapse functionality.
+            </div>
+        </div>
+    </div>
+
+
+
+    <div>
+        @RenderBody()
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarCollapse = document.getElementById('sidebarCollapse');
+            const mainContent = document.getElementById('main-content');
+            const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+
+            // Toggle sidebar collapse/expand
+            sidebarCollapse.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            });
+
+            // Mobile sidebar toggle
+            mobileSidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickHamburger = mobileSidebarToggle.contains(event.target);
+
+                if (!isClickInsideSidebar && !isClickHamburger && window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                }
+            });
+
+            // Update active nav item on click
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(navItem => navItem.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Close sidebar on mobile after selection
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+
+            // Handle window resize
+            function handleResize() {
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove('active');
+                }
+            }
+
+            window.addEventListener('resize', handleResize);
+        });
+    </script>
+
+</body>
+</html>

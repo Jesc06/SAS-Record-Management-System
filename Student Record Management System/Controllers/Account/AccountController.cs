@@ -10,6 +10,12 @@ namespace Student_Record_Management_System.Controllers.Account
             return View();
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
         {
