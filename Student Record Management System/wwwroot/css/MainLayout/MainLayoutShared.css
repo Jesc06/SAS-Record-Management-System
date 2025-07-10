@@ -47,20 +47,22 @@ body {
             left:4px;
         }
 .logoMinsu{
-    width:60px;
+    width:48px;
     height:auto;
 }
 
 .stateU {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 400;
     position: relative;
-    bottom: 10px;
+    bottom: 7px;
     color: #015B2D;
 }
 .Mindoro {
-    font-size: 1.9rem;
+    font-size: 1.4rem;
     color: #015B2D;
+    position: relative;
+    top: 7px;
 }
 
 #sidebar.collapsed .sidebar-header .logo,

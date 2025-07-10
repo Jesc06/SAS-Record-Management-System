@@ -24,39 +24,39 @@
 
             <div class="sidebar-content">
                 <ul class="list-unstyled">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-home"></i>
+                    <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "SubmitDocuments" ? "active" : "")">
+                        <a class="nav-link" asp-controller="SidebarNavigation" asp-action="SubmitDocuments">
+                            <i class="fas fa-upload"></i>
                             <span>Submit Documents</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-chart-line"></i>
+                    <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "RequestDocuments" ? "active" : "")">
+                        <a class="nav-link" asp-controller="SidebarNavigation" asp-action="RequestDocuments">
+                            <i class="fas fa-file-alt me-2"></i>
                             <span>Request Documents</span>
                         </a>
-                    </li>
-                   
+                    </li>    
                 </ul>
 
                 <div class="profile-section" id="profileSection">
                     <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/965cd765-a659-4c6b-9980-5eb6df0a417f.png"
                          alt="User profile photo"
-                         class="profile-img">
-                    <div class="profile-info" id="profileInfo" style="cursor: pointer;">
+                         class="profile-img" id="profileInfo" style="cursor: pointer;">
+                    <div class="profile-info">
                         <div class="profile-name">John Doe</div>
                         <div class="profile-role">Student</div>
                     </div>
 
                     <!-- POPUP UI -->
                     <div class="profile-popup d-none" id="logoutPopup">
-                        <a class="logout-btn" href="/Account/Logout">
+                        <a class="logout-btn">
                             <i class="fas  me-1"></i> Logout
                         </a>
                     </div>
                 </div>
 
             </div>
+        </div>
         </div>
 
 

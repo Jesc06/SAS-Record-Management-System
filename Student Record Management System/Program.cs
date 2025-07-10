@@ -20,7 +20,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name:"default",
-    pattern: "{controller=Account}/{action=Login}/{id?}"
+    pattern: "{controller=Submit}/{action=SubmitDocuments}/{id?}"
 );
 
 app.Run();

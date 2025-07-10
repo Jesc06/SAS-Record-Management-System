@@ -9,86 +9,118 @@
 
 
 
-<div class="container">
-    <div class="registration-container">
-        <div class="form-header">
-            <h2>Submit Documents</h2>
-            <p class="text-muted">Please fill in all required fields</p>
+
+
+<section>
+
+    <div class="SubForm">
+        <div class="container">
+            <!-- University Header -->
+            <div class="school-header d-flex align-items-center mb-4 shadow-sm p-3 bg-white rounded">
+                <img src="~/images/MinsuLogo.png" alt="School Logo" class="school-logo me-3">
+                <div>
+                    <h4 class="mb-0 school-name">Mindoro State University</h4>
+                    <small class="text-muted">
+                      Student Document Submission Portal
+                    </small>
+                </div>
+            </div>
+
+            <!-- Submission Form -->
+            <div class="registration-container shadow bg-white">
+                <div class="form-header">
+                    <h2>Document Submission</h2>
+                    <p class="text-muted">Please complete all required fields below</p>
+                </div>
+
+                <form id="registrationForm" method="post" enctype="multipart/form-data" novalidate>
+                    <!-- Full Name -->
+                    <div class="row mb-3">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <label for="firstName" class="form-label required-field">
+                                <i class="fas fa-user me-1"></i>First Name
+                            </label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <label for="middleName" class="form-label">
+                                <i class="fas fa-user me-1"></i>Middle Name
+                            </label>
+                            <input type="text" class="form-control" id="middleName" name="middleName">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lastName" class="form-label required-field">
+                                <i class="fas fa-user me-1"></i>Last Name
+                            </label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <!-- Program and Year Level -->
+                    <div class="row mb-3">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <label for="program" class="form-label required-field">
+                                <i class="fas fa-book me-1"></i>Program
+                            </label>
+                            <select class="form-select" id="program" name="program" required>
+                                <option value="" selected disabled>Select your program</option>
+                                <option value="cs">Computer Science</option>
+                                <option value="it">Information Technology</option>
+                                <option value="eng">Engineering</option>
+                                <option value="bus">Business Administration</option>
+                                <option value="nur">Nursing</option>
+                                <option value="art">Arts and Humanities</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="yearLevel" class="form-label required-field">
+                                <i class="fas fa-graduation-cap me-1"></i>Year Level
+                            </label>
+                            <select class="form-select" id="yearLevel" name="yearLevel" required>
+                                <option value="" selected disabled>Select year level</option>
+                                <option value="1">First Year</option>
+                                <option value="2">Second Year</option>
+                                <option value="3">Third Year</option>
+                                <option value="4">Fourth Year</option>
+                                <option value="5">Fifth Year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Student ID -->
+                    <div class="mb-3">
+                        <label for="studentId" class="form-label required-field">
+                            <i class="fas fa-id-card me-1"></i>Student ID
+                        </label>
+                        <input type="text" class="form-control" id="studentId" name="studentId" required>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div class="mb-4">
+                        <label for="documentUpload" class="form-label required-field">
+                            <i class="fas fa-paperclip me-1"></i>Upload Document
+                        </label>
+                        <input class="form-control" type="file" id="documentUpload" name="documentUpload"
+                               accept=".pdf,.doc,.docx,.jpg,.png" required>
+                        <div class="form-text">
+                            <i class="fas fa-info-circle me-1"></i>Accepted formats: PDF, DOC, DOCX, JPG, PNG
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn submit-btn text-white order-1 order-md-2">
+                            <i class="fas fa-paper-plane me-2"></i>Submit
+                        </button>
+                        <a asp-action="Login" class="btn btn-outline-secondary order-2 order-md-1">
+                            <i class="fas fa-times me-1"></i>Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <form id="registrationForm" novalidate>
-            <!-- Full Name -->
-            <div class="row mb-3">
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <label for="middleName" class="form-label">Middle Name</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-4">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-
-
-            <!-- Program and Year Level -->
-            <div class="row mb-3">
-                <div class="col-md-6 mb-3 mb-md-0">
-                    <label for="program" class="form-label">Program</label>
-                    <select class="form-select">
-                        <option value="" selected disabled>Select your program</option>
-                        <option value="cs">Computer Science</option>
-                        <option value="it">Information Technology</option>
-                        <option value="eng">Engineering</option>
-                        <option value="bus">Business Administration</option>
-                        <option value="nur">Nursing</option>
-                        <option value="art">Arts and Humanities</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="yearLevel" class="form-label">Year Level</label>
-                    <select class="form-select">
-                        <option value="" selected disabled>Select year level</option>
-                        <option value="1">First Year</option>
-                        <option value="2">Second Year</option>
-                        <option value="3">Third Year</option>
-                        <option value="4">Fourth Year</option>
-                        <option value="5">Fifth Year</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Student ID -->
-            <div class="mb-3">
-                <label for="studentId" class="form-label">Student ID</label>
-                <input type="text" class="form-control">
-            </div>
-
-            <!-- Passwords -->
-            <div class="row mb-5">
-                <div class="col-md-6 mb-3 mb-md-0">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control">
-                </div>
-                <div class="col-md-6">
-                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control">
-                </div>
-            </div>
-
-            <!-- Buttons -->
-            <div class="d-grid gap-3 d-md-flex justify-content-md-end">
-                <a asp-action="Login" class="btn btn-outline-secondary order-2 order-md-1">Cancel</a>
-                <button type="submit" asp-action="Login" class="btn btn-dark text-white order-1 order-md-2">
-                    Sign up
-                </button>
-            </div>
-
-
-        </form>
     </div>
-</div>
+
+</section>
 

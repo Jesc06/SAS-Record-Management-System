@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Student Dashboard";
+    Layout = "~/Views/Shared/_MainLayout/_Main.Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/MainLayout/Submit.css" asp-append-version="true" />
+</head>
+
+
+<div class="container">
+    <!-- University Header -->
+    <div class="school-header d-flex align-items-center mb-4 shadow-sm p-3 bg-white rounded">
+        <img src="~/images/MinsuLogo.png" alt="School Logo" class="school-logo me-3">
+        <div>
+            <h4 class="mb-0 school-name">Mindoro State University</h4>
+            <small class="text-muted">Request Documents</small>
+        </div>
+    </div>
+
+    <!-- Request Form -->
+    <div class="registration-container shadow bg-white">
+        <div class="form-header text-start">
+            <h2 class="mb-1">Request Documents</h2>
+            <p class="text-muted">Please complete the form below to request your official school documents.</p>
+        </div>
+
+        <form id="requestForm" method="post" novalidate>
+            <!-- Full Name -->
+            <div class="row mb-3">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <label for="firstName" class="form-label required-field">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <label for="middleName" class="form-label">Middle Name</label>
+                    <input type="text" class="form-control" id="middleName" name="middleName">
+                </div>
+                <div class="col-md-4">
+                    <label for="lastName" class="form-label required-field">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+            </div>
+
+            <!-- Student ID -->
+            <div class="mb-3">
+                <label for="studentId" class="form-label required-field">Student ID</label>
+                <input type="text" class="form-control" id="studentId" name="studentId" required>
+            </div>
+
+            <!-- Program & Year -->
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="program" class="form-label required-field">Program</label>
+                    <select class="form-select" id="program" name="program" required>
+                        <option value="" selected disabled>Select your program</option>
+                        <option value="bsit">Information Technology</option>
+                        <option value="bscs">Computer Science</option>
+                        <option value="bsba">Business Administration</option>
+                        <option value="bsn">Nursing</option>
+                        <option value="bse">Engineering</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="yearLevel" class="form-label required-field">Year Level</label>
+                    <select class="form-select" id="yearLevel" name="yearLevel" required>
+                        <option value="" selected disabled>Select year level</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                        <option value="5">Fifth Year</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Document Type -->
+            <div class="mb-3">
+                <label for="documentType" class="form-label required-field">Document to Request</label>
+                <select class="form-select" id="documentType" name="documentType" required>
+                    <option value="" selected disabled>Select document</option>
+                    <option value="tor">Transcript of Records</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="coe">Certificate of Enrollment</option>
+                    <option value="cog">Certificate of Good Moral</option>
+                    <option value="gradeslip">Grade Slip</option>
+                </select>
+            </div>
+
+            <!-- Number of Copies -->
+            <div class="mb-3">
+                <label for="copies" class="form-label required-field">Number of Copies</label>
+                <input type="number" class="form-control" id="copies" name="copies" min="1" value="1" required>
+            </div>
+
+            <!-- Purpose -->
+            <div class="mb-3">
+                <label for="purpose" class="form-label required-field">Purpose</label>
+                <textarea class="form-control" id="purpose" name="purpose" rows="3" placeholder="e.g. Scholarship, Job application..." required></textarea>
+            </div>
+
+
+            <!-- Buttons -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn submit-btn text-white order-1 order-md-2">
+                    <i class="fas fa-paper-plane me-2"></i>Submit Request
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary order-2 order-md-1">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
