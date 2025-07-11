@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Student Dashboard";
+    ViewData["Title"] = "Student submit documents";
     Layout = "~/Views/Shared/_MainLayout/_Main.Layout.cshtml";
 }
 
@@ -27,11 +27,11 @@
             </div>
 
             <!-- Submission Form -->
-            <div class="registration-container shadow bg-white">
-                <div class="form-header">
-                    <h2>Document Submission</h2>
-                    <p class="text-muted">Please complete all required fields below</p>
-                </div>
+                <div class="registration-container shadow bg-white">
+                    <div class="form-header text-start">
+                        <h2 class="mb-1">Document Submission</h2>
+                        <p class="text-muted">Please complete all required fields below</p>
+                    </div>
 
                 <form id="registrationForm" method="post" enctype="multipart/form-data" novalidate>
                     <!-- Full Name -->
@@ -113,7 +113,7 @@
                             <i class="fas fa-paper-plane me-2"></i>Submit
                         </button>
                         <a asp-action="Login" class="btn btn-outline-secondary order-2 order-md-1">
-                            <i class="fas fa-times me-1"></i>Cancel
+                           Cancel
                         </a>
                     </div>
                 </form>

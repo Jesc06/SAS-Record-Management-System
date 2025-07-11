@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="~/css/_AdminLayout/_AdminLayout.css" rel="stylesheet" asp-append-version="true">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="sidebar-header">
+                <img src="~/images/MinsuLogo.png" class="logoMinsu" />
+                <span class="logo"><span class="Mindoro">Mindoro</span><br><span class="stateU">State University</span></span>
+                <button id="sidebarCollapse" type="button">
+                    <i class="fas fa-angle-left toggle-icon"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-content">
+                <ul class="list-unstyled">
+                    <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "SubmitDocuments" ? "active" : "")">
+                        <a class="nav-link" asp-controller="SidebarNavigation" asp-action="SubmitDocuments">
+                            <i class="fas fa-upload"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "RequestDocuments" ? "active" : "")">
+                        <a class="nav-link" asp-controller="SidebarNavigation" asp-action="RequestDocuments">
+                            <i class="fas fa-file-alt me-2"></i>
+                            <span>Student Request</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="profile-section" id="profileSection">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/965cd765-a659-4c6b-9980-5eb6df0a417f.png"
+                         alt="User profile photo"
+                         class="profile-img" id="profileInfo" style="cursor: pointer;">
+                    <div class="profile-info">
+                        <div class="profile-name">John Doe</div>
+                        <div class="profile-role">Admin</div>
+                    </div>
+
+                    <!-- POPUP UI -->
+                    <div class="profile-popup d-none" id="logoutPopup">
+                        <a class="logout-btn">
+                            <i class="fas  me-1"></i> Logout
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 d-md-none">
+        <div class="container-fluid hamburger">
+            <button class="navbar-toggler" type="button" id="mobileSidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+
+
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/Js/AdminSideBar/sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
