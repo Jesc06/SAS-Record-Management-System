@@ -1,23 +1,4 @@
-﻿body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
-    background-image: url(/images/blur.jpg);
-    background-size: cover; /* Cover entire viewport */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent tiling */
-    background-attachment: fixed; /* Optional: keeps background fixed on scroll */
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: #2c3e50;
-}
-
-
-
+﻿
 .login-container {
     color: white;
     background-color: rgba(255, 255, 255, 0.40);

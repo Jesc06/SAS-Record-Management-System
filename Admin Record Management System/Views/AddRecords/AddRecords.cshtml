@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout/_AdminLayout.cshtml";
+}
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <i class="bi bi-upload"></i> Add New Records
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" action="/AdminDocuments/Add">
+            <div class="row g-3">
+                <!-- Document Name -->
+                <div class="col-md-6">
+                    <label for="DocumentName" class="form-label">Document Name</label>
+                    <input type="text" class="form-control" id="DocumentName" name="DocumentName" placeholder="e.g. Research Paper" required />
+                </div>
+
+                <!-- Document File -->
+                <div class="col-md-6">
+                    <label for="DocumentFile" class="form-label">Document File</label>
+                    <input type="file" class="form-control" id="DocumentFile" name="DocumentFile" accept=".pdf,.doc,.docx" required />
+                </div>
+
+                <!-- Submit -->
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-plus-circle"></i> Add New Record
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
