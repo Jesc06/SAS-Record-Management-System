@@ -1,0 +1,154 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout/_AdminLayout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Submit/submit.css" asp-append-version="true" />
+</head>
+
+<div class="container py-4">
+
+    
+    <h3 class="table-title mb-4 d-flex align-items-center">
+        Submitted Documents
+    </h3>
+
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-md-4">
+            <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+                <input type="text" id="searchName" class="form-control" placeholder="Search by name..." onkeyup="filterTable()">
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-mortarboard"></i></span>
+                <select id="searchProgram" class="form-select" onchange="filterTable()">
+                    <option value="">All Programs</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Business Administration">Business Administration</option>
+                    <option value="Electrical Engineering">Electrical Engineering</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Psychology">Psychology</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-file-earmark-check"></i></span>
+                <select id="searchDocument" class="form-select" onchange="filterTable()">
+                    <option value="">All Document Status</option>
+                    <option value="Complete">Complete</option>
+                    <option value="Pending">Pending</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="table-container">
+        <div class="table-responsive">
+            <table class="table table-hover table-borderless align-middle" id="submittedTable">
+                <thead class="table-light">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Program</th>
+                        <th>Year Level</th>
+                        <th>Student ID</th>
+                        <th>Documents</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John</td>
+                        <td>Michael</td>
+                        <td>Doe</td>
+                        <td>Computer Science</td>
+                        <td>3</td>
+                        <td>S2021-001</td>
+                        <td><span class="badge bg-success">Complete</span></td>
+                        <td class="d-flex gap-1 flex-wrap">
+                            <button class="btn btn-success btn-sm">
+                               Approve
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                               Reject
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane</td>
+                        <td>Marie</td>
+                        <td>Smith</td>
+                        <td>Business Administration</td>
+                        <td>2</td>
+                        <td>S2021-002</td>
+                        <td><span class="badge bg-warning text-dark">Pending</span></td>
+                        <td class="d-flex gap-1 flex-wrap">
+                            <button class="btn btn-success btn-sm">
+                                Approve
+                            </button>
+                            <button class="btn btn-danger btn-sm"> 
+                                Reject
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Robert</td>
+                        <td>James</td>
+                        <td>Johnson</td>
+                        <td>Electrical Engineering</td>
+                        <td>4</td>
+                        <td>S2021-003</td>
+                        <td><span class="badge bg-success">Complete</span></td>
+                        <td class="d-flex gap-1 flex-wrap">
+                            <button class="btn btn-success btn-sm">
+                               Approve
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                               Reject
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sarah</td>
+                        <td>Elizabeth</td>
+                        <td>Williams</td>
+                        <td>Biology</td>
+                        <td>1</td>
+                        <td>S2022-001</td>
+                        <td><span class="badge bg-success">Complete</span></td>
+                        <td class="d-flex gap-1 flex-wrap">
+                            <button class="btn btn-success btn-sm">
+                               Approve
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                               Reject
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>David</td>
+                        <td>Christopher</td>
+                        <td>Brown</td>
+                        <td>Psychology</td>
+                        <td>2</td>
+                        <td>S2022-002</td>
+                        <td><span class="badge bg-warning text-dark">Pending</span></td>
+                        <td class="d-flex gap-1 flex-wrap">
+                            <button class="btn btn-success btn-sm">
+                                Approve
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                                Reject
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

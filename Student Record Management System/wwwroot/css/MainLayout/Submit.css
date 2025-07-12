@@ -90,7 +90,11 @@ section {
 }
 
 @media (max-width: 430.98px) {
-   
+
+    .container{
+        position:relative;
+        top:7rem;
+    }
     .registration-container {
         padding: 20px;
         border-radius: 0;
