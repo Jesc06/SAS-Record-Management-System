@@ -50,10 +50,10 @@
                             <span>Overall Records</span>
                         </a>
                     </li>
-                     <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "RequestDocuments" ? "active" : "")">
-                        <a class="nav-link" asp-controller="SidebarNavigation" asp-action="RequestDocuments">
+                    <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "Register" ? "active" : "")">
+                        <a class="nav-link" asp-controller="StudentRegisterAccount" asp-action="Register">
                             <i class="fas fa-file-alt me-2"></i>
-                            <span>Accounts</span>
+                            <span>Students Accounts</span>
                         </a>
                     </li>
                 </ul>
