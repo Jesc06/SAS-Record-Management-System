@@ -3,55 +3,65 @@
     Layout = "~/Views/Shared/_AccountLayout/_Account.Layout.cshtml";
 }
 
-<head>
-    <link rel="stylesheet" href="~/css/Register/Register.css"  asp-append-version="true"/>
-</head>
+@model RegisterViewModel
 
+<head>
+    <link rel="stylesheet" href="~/css/Register/Register.css" asp-append-version="true" />
+</head>
 
 <div class="container">
     <div class="registration-container">
+
+
+        <div class="school-header text-center mb-1">
+            <img src="~/images/MinsuLogo.png" alt="School Logo" style="width: 100px; height: auto;" class="mb-2">
+        </div>
+
         <div class="form-header">
-            <h2><i class="fas fa-user-graduate me-2"></i>Sign Up</h2>
+            <h2><i class="fas fa-user-graduate me-2"></i>Register Account</h2>
             <p class="text-muted">Please fill in all required fields</p>
         </div>
 
-        <form id="registrationForm" novalidate>
-            <!-- Full Name -->
+        <form asp-controller="Account" asp-action="RegisterStudent">
             <div class="row mb-3">
                 <div class="col-md-4 mb-3 mb-md-0">
-                    <label for="firstName" class="form-label"><i class="fas fa-user me-1"></i>First Name</label>
-                    <input type="text" class="form-control">
+                    <label class="form-label"><i class="fas fa-user me-1"></i>First Name</label>
+                    <input type="text" asp-for="FirstName" class="form-control">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
                 <div class="col-md-4 mb-3 mb-md-0">
-                    <label for="middleName" class="form-label"><i class="fas fa-user me-1"></i>Middle Name</label>
-                    <input type="text" class="form-control">
+                    <label class="form-label"><i class="fas fa-user me-1"></i>Middle Name</label>
+                    <input type="text" asp-for="Middlename" class="form-control">
+                    <span asp-validation-for="Middlename" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
-                    <label for="lastName" class="form-label"><i class="fas fa-user me-1"></i>Last Name</label>
-                    <input type="text" class="form-control">
+                    <label class="form-label"><i class="fas fa-user me-1"></i>Last Name</label>
+                    <input type="text" asp-for="LastName" class="form-control">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
             </div>
 
-            <!-- Gender -->
             <div class="mb-3">
-                <label for="gender" class="form-label"><i class="fas fa-venus-mars me-1"></i>Gender</label>
-                <select class="form-select">
+                <label class="form-label"><i class="fas fa-venus-mars me-1"></i>Gender</label>
+                <select class="form-select" asp-for="Gender">
                     <option selected disabled>Select Gender</option>
                     <option>Male</option>
                     <option>Female</option>
                     <option>Prefer not to say</option>
                 </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
 
-            <!-- Birthdate -->
+
             <div class="row mb-3">
                 <div class="col-md-4 mb-3 mb-md-0">
-                    <label for="birthYear" class="form-label"><i class="fas fa-calendar-alt me-1"></i>Year of Birth</label>
-                    <input type="number" class="form-control" placeholder="e.g. 2005">
+                    <label class="form-label"><i class="fas fa-calendar-alt me-1"></i>Year of Birth</label>
+                    <input type="number" asp-for="YearOfBirth" class="form-control" placeholder="e.g. 2005">
+                    <span asp-validation-for="YearOfBirth" class="text-danger"></span>
                 </div>
                 <div class="col-md-4 mb-3 mb-md-0">
-                    <label for="birthMonth" class="form-label"><i class="fas fa-calendar-alt me-1"></i>Month of Birth</label>
-                    <select class="form-select">
+                    <label class="form-label"><i class="fas fa-calendar-alt me-1"></i>Month of Birth</label>
+                    <select class="form-select" asp-for="MonthOfBirth">
                         <option selected disabled>Select Month</option>
                         <option>January</option>
                         <option>February</option>
@@ -66,36 +76,41 @@
                         <option>November</option>
                         <option>December</option>
                     </select>
+                    <span asp-validation-for="MonthOfBirth" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
-                    <label for="birthDate" class="form-label"><i class="fas fa-calendar-alt me-1"></i>Date of Birth</label>
-                    <input type="number" class="form-control" placeholder="e.g. 15">
+                    <label class="form-label"><i class="fas fa-calendar-alt me-1"></i>Date of Birth</label>
+                    <input type="number" asp-for="DateOfBirth" class="form-control" placeholder="e.g. 15">
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                 </div>
             </div>
 
-            <!-- Home Address and Mobile Number -->
+
             <div class="row mb-3">
                 <div class="col-md-8 mb-3 mb-md-0">
-                    <label for="address" class="form-label"><i class="fas fa-map-marker-alt me-1"></i>Home Address</label>
-                    <input type="text" class="form-control">
+                    <label class="form-label"><i class="fas fa-map-marker-alt me-1"></i>Home Address</label>
+                    <input type="text" asp-for="HomeAddress" class="form-control">
+                    <span asp-validation-for="HomeAddress" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
-                    <label for="mobile" class="form-label"><i class="fas fa-mobile-alt me-1"></i>Mobile Number</label>
-                    <input type="text" class="form-control">
+                    <label class="form-label"><i class="fas fa-mobile-alt me-1"></i>Mobile Number</label>
+                    <input type="text" asp-for="MobileNumber" class="form-control">
+                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
                 </div>
             </div>
 
-            <!-- Email -->
+
             <div class="mb-3">
-                <label for="email" class="form-label"><i class="fas fa-envelope me-1"></i>Email</label>
-                <input type="email" class="form-control">
+                <label class="form-label"><i class="fas fa-envelope me-1"></i>Email</label>
+                <input type="email" asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
-            <!-- Program and Year Level -->
+
             <div class="row mb-3">
                 <div class="col-md-6 mb-3 mb-md-0">
-                    <label for="program" class="form-label"><i class="fas fa-book me-1"></i>Program</label>
-                    <select class="form-select">
+                    <label class="form-label"><i class="fas fa-book me-1"></i>Program</label>
+                    <select class="form-select" asp-for="Program">
                         <option value="" selected disabled>Select your program</option>
                         <option value="cs">Computer Science</option>
                         <option value="it">Information Technology</option>
@@ -104,10 +119,11 @@
                         <option value="nur">Nursing</option>
                         <option value="art">Arts and Humanities</option>
                     </select>
+                    <span asp-validation-for="Program" class="text-danger"></span>
                 </div>
                 <div class="col-md-6">
-                    <label for="yearLevel" class="form-label"><i class="fas fa-layer-group me-1"></i>Year Level</label>
-                    <select class="form-select">
+                    <label class="form-label"><i class="fas fa-layer-group me-1"></i>Year Level</label>
+                    <select class="form-select" asp-for="YearLevel">
                         <option value="" selected disabled>Select year level</option>
                         <option value="1">First Year</option>
                         <option value="2">Second Year</option>
@@ -115,39 +131,40 @@
                         <option value="4">Fourth Year</option>
                         <option value="5">Fifth Year</option>
                     </select>
+                    <span asp-validation-for="YearLevel" class="text-danger"></span>
                 </div>
             </div>
 
-            <!-- Student ID -->
+
             <div class="mb-3">
-                <label for="studentId" class="form-label"><i class="fas fa-id-card me-1"></i>Student ID</label>
-                <input type="text" class="form-control">
+                <label class="form-label"><i class="fas fa-id-card me-1"></i>Student ID</label>
+                <input type="text" asp-for="StudentID" class="form-control">
+                <span asp-validation-for="StudentID" class="text-danger"></span>
             </div>
 
-            <!-- Passwords -->
+
             <div class="row mb-3">
                 <div class="col-md-6 mb-3 mb-md-0">
-                    <label for="password" class="form-label"><i class="fas fa-lock me-1"></i>Password</label>
-                    <input type="password" class="form-control">
+                    <label class="form-label"><i class="fas fa-lock me-1"></i>Password</label>
+                    <input type="password" asp-for="Password" class="form-control">
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="col-md-6">
-                    <label for="confirmPassword" class="form-label"><i class="fas fa-lock me-1"></i>Confirm Password</label>
-                    <input type="password" class="form-control">
+                    <label class="form-label"><i class="fas fa-lock me-1"></i>Confirm Password</label>
+                    <input type="password" asp-for="ConfirmPassword" class="form-control">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
             </div>
 
-            <!-- Buttons -->
+ 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a asp-action="Login" class="btn btn-outline-secondary order-2 order-md-1">
                     <i class="fas fa-times me-1"></i>Cancel
                 </a>
-                <button type="submit" class="btn submit-btn text-white order-1 order-md-2">
+                <button type="submit" class="btn submit-btn text-white order-1 order-md-2" style="background-color: darkgreen;">
                     <i class="fas fa-user-plus me-2"></i>Sign up
                 </button>
             </div>
         </form>
     </div>
 </div>
-
-
-

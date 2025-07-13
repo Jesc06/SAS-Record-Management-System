@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\SAS Record Management System.Domain\SAS Record Management System.Domain.csproj" />
   </ItemGroup>
 
 </Project>

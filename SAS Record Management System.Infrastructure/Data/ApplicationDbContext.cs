@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SAS_Record_Management_System.Infrastructure.Data;
+using SAS_Record_Management_System.Domain.Entities;
 
 namespace SAS_Record_Management_System.Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext<UserAccountRegistrationCredentials>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public DbSet<StudentAccountRegistration> StudentAccountRegistrations { get; set; }
     }
 }
