@@ -8,20 +8,21 @@ namespace SAS_Record_Management_System.Domain.Entities
 {
     public class StudentAccountRegistration
     {
-        public required string FirstName { get; set; }
-        public required string Middlename { get; set; }
-        public required string LastName { get; set; }
-        public required string Gender { get; set; }
-        public required int YearOfBirth { get; set; }
-        public required string MonthOfBirth { get; set; }
-        public required int DateOfBirth { get; set; }
-        public required string HomeAddress { get; set; }
-        public required string MobileNumber { get; set; }
-        public required string Email { get; set; }
-        public required string Program { get; set; }
-        public required string YearLevel { get; set; }
-        public required string StudentID { get; set; }
-        public required string Password { get; set; }
-        public required string ConfirmPassword { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string Middlename { get; set; }
+        public string LastName { get; set; }
+        public string Gender { get; set; }
+        public int YearOfBirth { get; set; }
+        public string MonthOfBirth { get; set; }
+        public int DateOfBirth { get; set; }
+        public string HomeAddress { get; set; }
+        public string MobileNumber { get; set; }
+        public string Email { get; set; }
+        public string Program { get; set; }
+        public string YearLevel { get; set; }
+        public string StudentID { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }
