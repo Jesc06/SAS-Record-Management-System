@@ -3,6 +3,7 @@ using Student_Record_Management_System.ViewModels.Account;
 using SAS_Record_Management_System.Application.Services;
 using SAS_Record_Management_System.Domain.Entities;
 using SAS_Record_Management_System.Application.DTOs;
+using AutoMapper;
 
 
 namespace Student_Record_Management_System.Controllers.Account
@@ -10,11 +11,11 @@ namespace Student_Record_Management_System.Controllers.Account
     public class AccountController : Controller
     {
         private readonly StudentAccountRegistrationService _studentAccountRegistrationService;
-
-        public AccountController( StudentAccountRegistrationService studentAccountRegistrationService)
+        private readonly IMapper _mapper;
+        public AccountController(IMapper mapper, StudentAccountRegistrationService studentAccountRegistrationService)
         {
             _studentAccountRegistrationService = studentAccountRegistrationService;
-      
+            _mapper = mapper;
         }
 
         public IActionResult Login()
@@ -29,7 +30,6 @@ namespace Student_Record_Management_System.Controllers.Account
         }
 
 
-
         [HttpPost]
         public async Task<IActionResult> RegisterStudent(RegisterViewModel model)
         {
@@ -38,27 +38,8 @@ namespace Student_Record_Management_System.Controllers.Account
                ModelState.AddModelError("", "Please fill in all required fields correctly.");
                return View("Register",model);
             }
-            StudentAccountRegistrationDTO dto = new StudentAccountRegistrationDTO
-            {
-                FirstName = model.FirstName,
-                Middlename = model.Middlename,
-                LastName = model.LastName,
-                Gender = model.Gender,
-                YearOfBirth = model.YearOfBirth,
-                MonthOfBirth = model.MonthOfBirth,
-                DateOfBirth = model.DateOfBirth,
-                HomeAddress = model.HomeAddress,
-                MobileNumber = model.MobileNumber,
-                Email = model.Email,
-                Program = model.Program,
-                YearLevel = model.YearLevel,
-                StudentID = model.StudentID,
-                Password = model.Password,
-                ConfirmPassword = model.ConfirmPassword
-
-            };
-
-            var result = await _studentAccountRegistrationService.RegisterAccountAsync(dto);
+            var dto = _mapper.Map<StudentAccountRegistrationDTO>(model);
+            await _studentAccountRegistrationService.RegisterAccountAsync(dto);
             return RedirectToAction("Login","Account");
         }
 

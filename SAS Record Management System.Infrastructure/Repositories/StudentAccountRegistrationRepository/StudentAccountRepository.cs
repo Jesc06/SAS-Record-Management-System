@@ -7,6 +7,7 @@ using SAS_Record_Management_System.Application.Interfaces;
 using SAS_Record_Management_System.Infrastructure.Data;
 using SAS_Record_Management_System.Domain.Entities;
 using SAS_Record_Management_System.Application.DTOs;
+using AutoMapper;
 
 
 namespace SAS_Record_Management_System.Infrastructure.Repositories.StudentAccountRegistrationRepository
@@ -14,34 +15,20 @@ namespace SAS_Record_Management_System.Infrastructure.Repositories.StudentAccoun
     public class StudentAccountRepository : IstudentAccountRegistration
     {
         private readonly ApplicationDbContext _context;
-        public StudentAccountRepository(ApplicationDbContext context)
+        private readonly IMapper _mapper;
+        public StudentAccountRepository(IMapper mapper, ApplicationDbContext context)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task AddAsync(StudentAccountRegistrationDTO modelDomain)
         {
-            StudentAccountRegistration domain = new StudentAccountRegistration
-            {
-                FirstName = modelDomain.FirstName,
-                Middlename = modelDomain.Middlename,
-                LastName = modelDomain.LastName,
-                Gender = modelDomain.Gender,
-                YearOfBirth = modelDomain.YearOfBirth,
-                MonthOfBirth = modelDomain.MonthOfBirth,
-                DateOfBirth = modelDomain.DateOfBirth,
-                HomeAddress = modelDomain.HomeAddress,
-                MobileNumber = modelDomain.MobileNumber,
-                Email = modelDomain.Email,
-                Program = modelDomain.Program,
-                YearLevel = modelDomain.YearLevel,
-                StudentID = modelDomain.StudentID,
-                Password = modelDomain.Password,
-                ConfirmPassword = modelDomain.ConfirmPassword
-            };
+            var domain = _mapper.Map<StudentAccountRegistration>(modelDomain);
             await _context.StudentAccountRegistrations.AddAsync(domain);
             await _context.SaveChangesAsync();
         }
+
 
     }
 }

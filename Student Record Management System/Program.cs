@@ -4,9 +4,12 @@ using SAS_Record_Management_System.Application.Interfaces;
 using SAS_Record_Management_System.Application.Services;
 using SAS_Record_Management_System.Infrastructure.Data;
 using SAS_Record_Management_System.Infrastructure.Repositories.StudentAccountRegistrationRepository;
-
+using SAS_Record_Management_System.Application.Mappings;
+using Student_Record_Management_System.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAutoMapper(typeof(MappingProfile), typeof(ViewMappingProfile));
 
 builder.Services.AddControllersWithViews();
 

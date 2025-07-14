@@ -11,4 +11,8 @@
     <ProjectReference Include="..\SAS Record Management System.Domain\SAS Record Management System.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+  </ItemGroup>
+
 </Project>
