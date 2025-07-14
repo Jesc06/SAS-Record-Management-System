@@ -16,7 +16,7 @@ namespace Student_Record_Management_System.ViewModels.Account
         [Required(ErrorMessage = "Gender is required")]
         public string Gender { get; set; }
 
-        [Required(ErrorMessage = "Year of birth name is required")]
+        [Required(ErrorMessage = "Year of birth is required")]
         public string YearOfBirth { get; set; }
 
         [Required(ErrorMessage = "Month of birth is required")]

@@ -2,6 +2,7 @@
 using Student_Record_Management_System.ViewModels.Account;
 using SAS_Record_Management_System.Application.Services;
 using SAS_Record_Management_System.Domain.Entities;
+using SAS_Record_Management_System.Application.DTOs;
 
 
 namespace Student_Record_Management_System.Controllers.Account
@@ -22,7 +23,6 @@ namespace Student_Record_Management_System.Controllers.Account
         }
 
 
-
         public IActionResult Register()
         {
             return View();
@@ -36,9 +36,9 @@ namespace Student_Record_Management_System.Controllers.Account
             if (!ModelState.IsValid)
             {
                ModelState.AddModelError("", "Please fill in all required fields correctly.");
-                return View("Register", model);
+               return View("Register",model);
             }
-            StudentAccountRegistration dto = new StudentAccountRegistration
+            StudentAccountRegistrationDTO dto = new StudentAccountRegistrationDTO
             {
                 FirstName = model.FirstName,
                 Middlename = model.Middlename,
@@ -59,9 +59,7 @@ namespace Student_Record_Management_System.Controllers.Account
             };
 
             var result = await _studentAccountRegistrationService.RegisterAccountAsync(dto);
-
-            return View("Register", model);
-
+            return RedirectToAction("Login","Account");
         }
 
 
