@@ -13,9 +13,9 @@ namespace SAS_Record_Management_System.Domain.Entities
         public string Middlename { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
-        public int YearOfBirth { get; set; }
+        public string YearOfBirth { get; set; }
         public string MonthOfBirth { get; set; }
-        public int DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
         public string HomeAddress { get; set; }
         public string MobileNumber { get; set; }
         public string Email { get; set; }

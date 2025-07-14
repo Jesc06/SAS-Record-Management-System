@@ -2,7 +2,7 @@
 using Student_Record_Management_System.ViewModels.Account;
 using SAS_Record_Management_System.Application.Services;
 using SAS_Record_Management_System.Domain.Entities;
-using AutoMapper;
+
 
 namespace Student_Record_Management_System.Controllers.Account
 {
@@ -36,7 +36,7 @@ namespace Student_Record_Management_System.Controllers.Account
             if (!ModelState.IsValid)
             {
                ModelState.AddModelError("", "Please fill in all required fields correctly.");
-                return View("Register", "Account");
+                return View("Register", model);
             }
             StudentAccountRegistration dto = new StudentAccountRegistration
             {
@@ -58,24 +58,9 @@ namespace Student_Record_Management_System.Controllers.Account
 
             };
 
-            try
-            {
-                var result = await _studentAccountRegistrationService.RegisterAccountAsync(dto);
+            var result = await _studentAccountRegistrationService.RegisterAccountAsync(dto);
 
-                if (!result || dto is null || model is null)
-                {
-                    ModelState.AddModelError("", "Registration failed. Please try again.");
-                    return View("Register", model);
-                }
-
-                return RedirectToAction("Login", "Account");
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", $"An error occurred during registration: {ex.Message}");
-                return View("Register", model);
-            }
-
+            return View("Register", model);
 
         }
 

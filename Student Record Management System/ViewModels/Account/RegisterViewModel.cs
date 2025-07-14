@@ -17,13 +17,13 @@ namespace Student_Record_Management_System.ViewModels.Account
         public string Gender { get; set; }
 
         [Required(ErrorMessage = "Year of birth name is required")]
-        public int YearOfBirth { get; set; }
+        public string YearOfBirth { get; set; }
 
         [Required(ErrorMessage = "Month of birth is required")]
         public string MonthOfBirth { get; set; }
 
         [Required(ErrorMessage = "Date of birth is required")]
-        public int DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "Home address is required")]
         public string HomeAddress { get; set; }
