@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SAS_Record_Management_System.Infrastructure.Data;
+using SAS_Record_Management_System.Infrastructure.Persistence.Data;
 
 #nullable disable
 
 namespace SAS_Record_Management_System.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250715013327_UpdateDbSet")]
-    partial class UpdateDbSet
+    [Migration("20250715113851_RemoveConfirmPasswordColumn")]
+    partial class RemoveConfirmPasswordColumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -165,10 +165,6 @@ namespace SAS_Record_Management_System.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ConfirmPassword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DateOfBirth")
                         .IsRequired()

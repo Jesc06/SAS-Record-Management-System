@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SAS_Record_Management_System.Infrastructure.Data;
-using SAS_Record_Management_System.Domain.Entities;
+using SAS_Record_Management_System.Domain.Entities.Account;
 
-namespace SAS_Record_Management_System.Infrastructure.Data
+namespace SAS_Record_Management_System.Infrastructure.Persistence.Data
 {
     public class ApplicationDbContext : IdentityDbContext<UserAccountRegistrationCredentials>
     {

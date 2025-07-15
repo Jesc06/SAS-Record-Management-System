@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SAS_Record_Management_System.Infrastructure.Data;
+using SAS_Record_Management_System.Infrastructure.Persistence.Data;
 
 #nullable disable
 
 namespace SAS_Record_Management_System.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250714033042_updateDomain")]
-    partial class updateDomain
+    [Migration("20250715013327_UpdateDbSet")]
+    partial class UpdateDbSet
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -228,7 +228,7 @@ namespace SAS_Record_Management_System.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StudentAccountRegistrations");
+                    b.ToTable("StudentAccountRegistrations_Db");
                 });
 
             modelBuilder.Entity("SAS_Record_Management_System.Infrastructure.Data.UserAccountRegistrationCredentials", b =>

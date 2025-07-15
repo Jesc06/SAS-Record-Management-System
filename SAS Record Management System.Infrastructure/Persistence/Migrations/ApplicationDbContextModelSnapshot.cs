@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SAS_Record_Management_System.Infrastructure.Data;
+using SAS_Record_Management_System.Infrastructure.Persistence.Data;
 
 #nullable disable
 
 namespace SAS_Record_Management_System.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250713060949_StudentRegistration")]
-    partial class StudentRegistration
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,12 +163,9 @@ namespace SAS_Record_Management_System.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ConfirmPassword")
+                    b.Property<string>("DateOfBirth")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DateOfBirth")
-                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -221,12 +215,13 @@ namespace SAS_Record_Management_System.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("YearOfBirth")
-                        .HasColumnType("int");
+                    b.Property<string>("YearOfBirth")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("StudentAccountRegistrations");
+                    b.ToTable("StudentAccountRegistrations_Db");
                 });
 
             modelBuilder.Entity("SAS_Record_Management_System.Infrastructure.Data.UserAccountRegistrationCredentials", b =>

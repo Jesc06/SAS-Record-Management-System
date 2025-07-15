@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Student_Record_Management_System.ViewModels.Account;
-using SAS_Record_Management_System.Application.Services;
 using SAS_Record_Management_System.Domain.Entities;
-using SAS_Record_Management_System.Application.DTOs;
 using AutoMapper;
+using SAS_Record_Management_System.Application.Features.Account.DTO;
+using SAS_Record_Management_System.Application.Features.Account.Services;
 
 
 namespace Student_Record_Management_System.Controllers.Account

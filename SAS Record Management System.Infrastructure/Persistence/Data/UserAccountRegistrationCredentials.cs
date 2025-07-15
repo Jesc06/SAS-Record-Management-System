@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace SAS_Record_Management_System.Infrastructure.Data
+namespace SAS_Record_Management_System.Infrastructure.Persistence.Data
 {
     public class UserAccountRegistrationCredentials : IdentityUser
     {

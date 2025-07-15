@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SAS_Record_Management_System.Application.Interfaces;
-using SAS_Record_Management_System.Infrastructure.Data;
-using SAS_Record_Management_System.Domain.Entities;
-using SAS_Record_Management_System.Application.DTOs;
 using AutoMapper;
+using SAS_Record_Management_System.Domain.Entities.Account;
+using SAS_Record_Management_System.Infrastructure.Persistence.Data;
+using SAS_Record_Management_System.Application.Features.Account.DTO;
+using SAS_Record_Management_System.Application.Features.Account.Interfaces;
 
 
-namespace SAS_Record_Management_System.Infrastructure.Repositories.StudentAccountRegistrationRepository
+namespace SAS_Record_Management_System.Infrastructure.Features.Account.Repositories
 {
     public class StudentAccountRepository : IstudentAccountRegistration
     {
@@ -21,7 +21,7 @@ namespace SAS_Record_Management_System.Infrastructure.Repositories.StudentAccoun
             _context = context;
             _mapper = mapper;
         }
-                                                    
+          
         public async Task AddAsync(StudentAccountRegistrationDTO modelDomain)
         {
             var domain = _mapper.Map<StudentAccountRegistration>(modelDomain);
