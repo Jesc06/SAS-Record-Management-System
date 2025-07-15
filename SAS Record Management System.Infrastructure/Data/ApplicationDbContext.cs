@@ -14,6 +14,6 @@ namespace SAS_Record_Management_System.Infrastructure.Data
     public class ApplicationDbContext : IdentityDbContext<UserAccountRegistrationCredentials>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        public DbSet<StudentAccountRegistration> StudentAccountRegistrations { get; set; }
+        public DbSet<StudentAccountRegistration> StudentAccountRegistrations_Db { get; set; }
     }
 }

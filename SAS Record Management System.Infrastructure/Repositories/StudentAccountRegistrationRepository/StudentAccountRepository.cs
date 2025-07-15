@@ -21,11 +21,11 @@ namespace SAS_Record_Management_System.Infrastructure.Repositories.StudentAccoun
             _context = context;
             _mapper = mapper;
         }
-
+                                                    
         public async Task AddAsync(StudentAccountRegistrationDTO modelDomain)
         {
             var domain = _mapper.Map<StudentAccountRegistration>(modelDomain);
-            await _context.StudentAccountRegistrations.AddAsync(domain);
+            await _context.StudentAccountRegistrations_Db.AddAsync(domain);
             await _context.SaveChangesAsync();
         }
 
