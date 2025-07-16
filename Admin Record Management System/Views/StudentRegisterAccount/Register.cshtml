@@ -2,6 +2,8 @@
     Layout = "~/Views/Shared/_AdminLayout/_AdminLayout.cshtml";
 }
 
+@model List<StudentAccountRegistrationDTO>
+
 <head>
     <link rel="stylesheet" href="~/css/StudentRegister/Register.css" asp-append-version="true" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -70,11 +72,28 @@
                         <th>YearLevel</th>
                         <th>StudentID</th>
                         <th>Password</th>
-                        <th>ConfirmPassword</th>
                     </tr>
                 </thead>
                 <tbody>
-                   
+                    @foreach(var GetAllAccounts in Model)
+                    {
+                        <tr>
+                            <td>@GetAllAccounts.FirstName</td>
+                            <td>@GetAllAccounts.Middlename</td>
+                            <td>@GetAllAccounts.LastName</td>
+                            <td>@GetAllAccounts.Gender</td>
+                            <td>@GetAllAccounts.YearOfBirth</td>
+                            <td>@GetAllAccounts.MonthOfBirth</td>
+                            <td>@GetAllAccounts.DateOfBirth</td>
+                            <td>@GetAllAccounts.HomeAddress</td>
+                            <td>@GetAllAccounts.MobileNumber</td>
+                            <td>@GetAllAccounts.Email</td>
+                            <td>@GetAllAccounts.Program</td>
+                            <td>@GetAllAccounts.YearLevel</td>
+                            <td>@GetAllAccounts.StudentID</td>
+                            <td>@GetAllAccounts.Password</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

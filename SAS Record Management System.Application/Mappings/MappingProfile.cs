@@ -14,6 +14,7 @@ namespace SAS_Record_Management_System.Application.Mappings
         public MappingProfile()
         {
             CreateMap<StudentAccountRegistrationDTO, StudentAccountRegistration>();
+            CreateMap<StudentAccountRegistration, StudentAccountRegistrationDTO>();
         }
     }
    
