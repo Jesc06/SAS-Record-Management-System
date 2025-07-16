@@ -1,14 +1,13 @@
 ﻿body {
-    background-color: white;
+    background-color: #F0FFF6;
     padding: 20px;
 }
-        .table-container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            padding: 25px;
-            margin-top: 20px;
-        }
+.table-container {
+    background-color: #F7FDF9;
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 20px;
+}
         .table-title {
             font-weight: 600;
             color: #333;
@@ -26,9 +25,9 @@
         .table tbody tr {
             transition: all 0.2s ease;
         }
-        .table tbody tr:hover {
-            background-color: #f8f9fa;
-        }
+            .table tbody tr:hover {
+                background-color: #FBBC17;
+            }
 
 
 .container{

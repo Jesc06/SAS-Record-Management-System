@@ -28,31 +28,31 @@
                 <ul class="list-unstyled">
                     <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "AdminDashboard" ? "active" : "")">
                         <a class="nav-link" asp-controller="AdminDashboard" asp-action="AdminDashboard">
-                            <i class="fas fa-upload"></i>
+                            <i class="fa-solid fa-house"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "submit" ? "active" : "")">
                         <a class="nav-link" asp-controller="Submit" asp-action="submit">
-                            <i class="fas fa-file-alt me-2"></i>
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
                             <span>Submited Documents</span>
                         </a>
                     </li>
                     <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "request" ? "active" : "")">
                         <a class="nav-link" asp-controller="Request" asp-action="request">
-                            <i class="fas fa-file-alt me-2"></i>
+                            <i class="fa-solid fa-code-pull-request"></i>
                             <span>Requested Documents</span>
                         </a>
                     </li>
                     <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "AllRecords" ? "active" : "")">
                         <a class="nav-link" asp-controller="OverallRecords" asp-action="AllRecords">
-                            <i class="fas fa-file-alt me-2"></i>
+                            <i class="fa-solid fa-border-all"></i>
                             <span>Overall Records</span>
                         </a>
                     </li>
                     <li class="nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "Register" ? "active" : "")">
                         <a class="nav-link" asp-controller="StudentRegisterAccount" asp-action="Register">
-                            <i class="fas fa-file-alt me-2"></i>
+                            <i class="fa-solid fa-users"></i>
                             <span>Students Accounts</span>
                         </a>
                     </li>
