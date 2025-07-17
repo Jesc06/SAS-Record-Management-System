@@ -9,6 +9,7 @@ namespace SAS_Record_Management_System.Application.Features.Account.DTO
 {
     public class StudentAccountRegistrationDTO
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string Middlename { get; set; }
         public string LastName { get; set; }

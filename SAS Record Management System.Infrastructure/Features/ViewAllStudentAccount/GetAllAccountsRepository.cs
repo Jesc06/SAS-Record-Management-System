@@ -16,16 +16,24 @@ namespace SAS_Record_Management_System.Infrastructure.Features.ViewAllStudentAcc
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
-        public GetAllAccountsRepository(IMapper mapper,ApplicationDbContext context)
+        public GetAllAccountsRepository(IMapper mapper, ApplicationDbContext context)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public async Task<List<StudentAccountRegistrationDTO>> GetAllAccounts()
+        public async Task<IEnumerable<StudentAccountRegistrationDTO>> GetAllAccounts()
         {
             return await _context.StudentAccountRegistrations_Db.ProjectTo<StudentAccountRegistrationDTO>(_mapper.ConfigurationProvider).ToListAsync();
-        } 
+        }
+
+        public async Task<StudentAccountRegistrationDTO> GetAccountById(int id)
+        {
+            var a = _mapper.Map<StudentAccountRegistrationDTO>(
+                await _context.StudentAccountRegistrations_Db.FindAsync(id)
+            );
+            return a;
+        }
 
 
     }

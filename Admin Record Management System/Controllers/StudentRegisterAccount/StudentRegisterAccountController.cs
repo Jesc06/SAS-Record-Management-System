@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SAS_Record_Management_System.Application.Features.ViewAllStudentAccount.Services;
+using System.Threading.Tasks;
 
 namespace Admin_Record_Management_System.Controllers.StudentRegisterAccount
 {
@@ -17,5 +18,16 @@ namespace Admin_Record_Management_System.Controllers.StudentRegisterAccount
             var GetAllAccounts = await _getAllAccounts.GetAllAccountsAsync();
             return View(GetAllAccounts);
         }
+
+
+        
+        public async Task<IActionResult> RegisterStudentAccounts(int GetId)
+        {
+            var Id = await _getAllAccounts.GetId(GetId);
+            return View("Register",Id);
+        }
+        
+
+
     }
 }

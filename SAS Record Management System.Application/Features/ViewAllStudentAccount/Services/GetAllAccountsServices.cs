@@ -16,10 +16,17 @@ namespace SAS_Record_Management_System.Application.Features.ViewAllStudentAccoun
             _getAllAccounts = getAllAccounts;
         }
 
-        public async Task<List<StudentAccountRegistrationDTO>> GetAllAccountsAsync()
+        public async Task<IEnumerable<StudentAccountRegistrationDTO>> GetAllAccountsAsync()
         {
             return await _getAllAccounts.GetAllAccounts();
         }
+
+
+        public async Task<StudentAccountRegistrationDTO> GetId(int id)
+        {
+            return await _getAllAccounts.GetAccountById(id);
+        }
+
 
 
     }
