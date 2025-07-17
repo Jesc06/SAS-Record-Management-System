@@ -5,9 +5,11 @@
 @model List<StudentAccountRegistrationDTO>
 
 <head>
-    <link rel="stylesheet" href="~/css/StudentRegister/Register.css" asp-append-version="true" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/StudentRegister/Register.css" asp-append-version="true" />
 </head>
+
+
 
 <div class="container py-4">
 
@@ -18,15 +20,15 @@
     </div>
 
     <!-- Filters -->
-    <div class="row g-2 mb-4">
+    <div class="row g-2 custom-gap mb-4">
         <div class="col-12 col-md-4">
-            <div class="input-group">
+            <div class="input-group narrow-select">
                 <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
                 <input type="text" id="searchName" class="form-control" placeholder="Search by name..." onkeyup="filterTable()">
             </div>
         </div>
         <div class="col-12 col-md-4">
-            <div class="input-group">
+            <div class="input-group narrow-select">
                 <span class="input-group-text bg-light"><i class="bi bi-mortarboard"></i></span>
                 <select id="searchProgram" class="form-select" onchange="filterTable()">
                     <option value="">All Programs</option>
@@ -39,7 +41,7 @@
             </div>
         </div>
         <div class="col-12 col-md-4">
-            <div class="input-group">
+            <div class="input-group narrow-select">
                 <span class="input-group-text bg-light"><i class="bi bi-mortarboard"></i></span>
                 <select id="searchProgram" class="form-select" onchange="filterTable()">
                     <option value="">Year Level</option>
@@ -62,16 +64,16 @@
                         <th>MiddleName</th>
                         <th>LastName</th>
                         <th>Gender</th>
-                        <th>YearOfBirth</th>
                         <th>MonthOfBirth</th>
                         <th>DateOfBirth</th>
+                        <th>YearOfBirth</th>
                         <th>HomeAddress</th>
                         <th>MobileNumber</th>
                         <th>Email</th>
                         <th>Program</th>
                         <th>YearLevel</th>
                         <th>StudentID</th>
-                        <th>Password</th>
+                        <th>Register Account</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,16 +84,20 @@
                             <td>@GetAllAccounts.Middlename</td>
                             <td>@GetAllAccounts.LastName</td>
                             <td>@GetAllAccounts.Gender</td>
-                            <td>@GetAllAccounts.YearOfBirth</td>
                             <td>@GetAllAccounts.MonthOfBirth</td>
                             <td>@GetAllAccounts.DateOfBirth</td>
+                            <td>@GetAllAccounts.YearOfBirth</td>
                             <td>@GetAllAccounts.HomeAddress</td>
                             <td>@GetAllAccounts.MobileNumber</td>
                             <td>@GetAllAccounts.Email</td>
                             <td>@GetAllAccounts.Program</td>
                             <td>@GetAllAccounts.YearLevel</td>
                             <td>@GetAllAccounts.StudentID</td>
-                            <td>@GetAllAccounts.Password</td>
+                            <td>
+                                <button type="submit" class="btn btn-success btn-sm ButtonRegister">
+                                    Register
+                                </button>
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -99,4 +105,49 @@
         </div>
     </div>
 </div>
+
+
+
+
+<div id="ModalBg" class="ModalBg">
+    <div id="Modal" class="modal">
+        <div class="content">
+            <h1>Are you sure want to Register this account?</h1>
+            <div class="buttons">
+                <button class="btn btn-success btn-lg">Register</button>
+                <button class="btn btn-dark btn-lg Close">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+    var modal = document.getElementById("Modal");
+    var modalBackground = document.getElementById("ModalBg");
+    var buttons = document.querySelectorAll(".ButtonRegister");
+    var Close = document.getElementsByClassName("Close")[0];
+
+
+
+       buttons.forEach(function(button){
+           button.onclick = function(){
+                modal.style.display = "flex";
+                modalBackground.style.display = "flex";
+           };
+       });
+    
+
+      Close.onclick = function(){
+        modal.style.display = "none";
+        modalBackground.style.display = "none";
+    }
+
+
+
+</script>
 

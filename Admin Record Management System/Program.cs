@@ -5,6 +5,7 @@ using SAS_Record_Management_System.Infrastructure.Features;
 using SAS_Record_Management_System.Application.Features.ViewAllStudentAccount.Interfaces;
 using SAS_Record_Management_System.Infrastructure.Features.ViewAllStudentAccount;
 using SAS_Record_Management_System.Application.Mappings;
+using SAS_Record_Management_System.Application.Features.ViewAllStudentAccount.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddScoped<IGetAllAccounts,GetAllAccountsRepository>();
+builder.Services.AddScoped<GetAllAccountsServices>();
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 
@@ -41,7 +43,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name:"default",
-    pattern: "{controller=Request}/{action=request}/{id?}"
+    pattern: "{controller=StudentRegisterAccount}/{action=Register}/{id?}"
 );
 
 app.Run();
