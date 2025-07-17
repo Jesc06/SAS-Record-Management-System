@@ -27,14 +27,6 @@ namespace SAS_Record_Management_System.Infrastructure.Features.ViewAllStudentAcc
             return await _context.StudentAccountRegistrations_Db.ProjectTo<StudentAccountRegistrationDTO>(_mapper.ConfigurationProvider).ToListAsync();
         }
 
-        public async Task<StudentAccountRegistrationDTO> GetAccountById(int id)
-        {
-            var a = _mapper.Map<StudentAccountRegistrationDTO>(
-                await _context.StudentAccountRegistrations_Db.FindAsync(id)
-            );
-            return a;
-        }
-
 
     }
 }

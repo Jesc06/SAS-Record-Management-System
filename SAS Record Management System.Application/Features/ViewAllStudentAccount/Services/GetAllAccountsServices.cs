@@ -22,12 +22,5 @@ namespace SAS_Record_Management_System.Application.Features.ViewAllStudentAccoun
         }
 
 
-        public async Task<StudentAccountRegistrationDTO> GetId(int id)
-        {
-            return await _getAllAccounts.GetAccountById(id);
-        }
-
-
-
     }
 }
