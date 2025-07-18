@@ -10,6 +10,6 @@ namespace SAS_Record_Management_System.Application.Features.ViewAllStudentAccoun
 {
     public interface IGetAllAccounts
     {
-        Task<IEnumerable<StudentAccountRegistrationDTO>> GetAllAccounts();
+        Task<List<StudentAccountRegistrationDTO>> GetAllAccounts();
     }
 }

@@ -10,7 +10,7 @@ using SAS_Record_Management_System.Application.Features.Account.DTO;
 using SAS_Record_Management_System.Application.Features.Account.Interfaces;
 
 
-namespace SAS_Record_Management_System.Infrastructure.Features.Account.Repositories
+namespace SAS_Record_Management_System.Infrastructure.Features.Account
 {
     public class StudentAccountRepository : IstudentAccountRegistration
     {

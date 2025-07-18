@@ -9,6 +9,7 @@ using SAS_Record_Management_System.Application.Features.Account.DTO;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using SAS_Record_Management_System.Domain.Entities.Account;
 
 namespace SAS_Record_Management_System.Infrastructure.Features.ViewAllStudentAccount
 {
@@ -22,9 +23,27 @@ namespace SAS_Record_Management_System.Infrastructure.Features.ViewAllStudentAcc
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<StudentAccountRegistrationDTO>> GetAllAccounts()
+        public async Task<List<StudentAccountRegistrationDTO>> GetAllAccounts()
         {
-            return await _context.StudentAccountRegistrations_Db.ProjectTo<StudentAccountRegistrationDTO>(_mapper.ConfigurationProvider).ToListAsync();
+      
+            return await _context.StudentAccountRegistrations_Db.Select(x => new StudentAccountRegistrationDTO
+            {
+                FirstName = x.FirstName,
+                Middlename = x.Middlename,
+                LastName = x.LastName,
+                Gender = x.Gender,
+                YearOfBirth = x.YearOfBirth,
+                MonthOfBirth = x.MonthOfBirth,
+                DateOfBirth = x.DateOfBirth,
+                HomeAddress = x.HomeAddress,
+                MobileNumber = x.MobileNumber,
+                Email = x.Email,
+                Program = x.Program,
+                YearLevel = x.YearLevel,
+                StudentID = x.StudentID,
+                Password = x.Password,
+            }).ToListAsync();
+
         }
 
 

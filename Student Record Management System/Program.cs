@@ -5,7 +5,7 @@ using Student_Record_Management_System.Mappings;
 using SAS_Record_Management_System.Infrastructure.Persistence.Data;
 using SAS_Record_Management_System.Application.Features.Account.Interfaces;
 using SAS_Record_Management_System.Application.Features.Account.Services;
-using SAS_Record_Management_System.Infrastructure.Features.Account.Repositories;
+using SAS_Record_Management_System.Infrastructure.Features.Account;
 
 var builder = WebApplication.CreateBuilder(args);
 
