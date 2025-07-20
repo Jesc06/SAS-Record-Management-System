@@ -18,7 +18,7 @@ namespace SAS_Record_Management_System.Application.Features.Account.Services
         }
 
 
-        public async Task<bool> RegisterAccountAsync(StudentAccountRegistrationDTO model)
+        public async Task<bool> AddAccount(StudentAccountRegistrationDTO model)
         {
             await _studentAccountRegistration.AddAsync(model);
             return true;

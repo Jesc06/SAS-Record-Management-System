@@ -39,7 +39,7 @@ namespace Student_Record_Management_System.Controllers.Account
                return View("Register",model);
             }
             var dto = _mapper.Map<StudentAccountRegistrationDTO>(model);
-            await _studentAccountRegistrationService.RegisterAccountAsync(dto);
+            await _studentAccountRegistrationService.AddAccount(dto);
             return RedirectToAction("Login","Account");
         }
 

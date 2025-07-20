@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<StudentAccountRegistrationDTO>;
+@model AccountsModel;
 @{
     Layout = "~/Views/Shared/_AdminLayout/_AdminLayout.cshtml";
 }
@@ -77,8 +77,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var GetAllAccounts in Model)
+                  
+                    @foreach(var GetAllAccounts in Model.studentAccountRegistrationDTOs)
                     {
+
                         <tr>
                             <td>@GetAllAccounts.FirstName</td>
                             <td>@GetAllAccounts.Middlename</td>
@@ -100,6 +102,7 @@
                             </td>
                         </tr>
                     }
+                 
                 </tbody>
             </table>
         </div>
@@ -108,11 +111,13 @@
 
 
 
+<form asp-controller="StudentRegisterAccount" asp-action="RegisterStudentAccount" method="post">
+
     <div id="ModalBg" class="ModalBg">
         <div id="Modal" class="modal">
             <div class="content">
-            <input type="hidden"  id="modalEmail"/>
-            <input type="hidden" id="modalPassword" />
+                <input asp-for="RegisterStudentAccountViewModel.email"  type="hidden" id="modalEmail" />
+                <input asp-for="RegisterStudentAccountViewModel.password"  type="hidden" id="modalPassword" />
                 <h1>Are you sure want to Register this account?</h1>
                 <div class="buttons">
                     <button class="btn btn-success btn-lg">Register</button>
@@ -121,7 +126,9 @@
             </div>
         </div>
     </div>
-
+ 
+</form>
+  
 
 
 
