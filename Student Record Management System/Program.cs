@@ -6,6 +6,8 @@ using SAS_Record_Management_System.Infrastructure.Persistence.Data;
 using SAS_Record_Management_System.Application.Features.Account.Interfaces;
 using SAS_Record_Management_System.Application.Features.Account.Services;
 using SAS_Record_Management_System.Infrastructure.Features.Account;
+using SAS_Record_Management_System.Infrastructure.Identity;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,7 +45,16 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name:"default",
-    pattern: "{controller=Request}/{action=RequestDocuments}/{id?}"
+    pattern: "{controller=Account}/{action=Login}/{id?}"
 );
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<UserAccountRegistrationCredentials>>();
+    await RolesSeed.Seeder(roleManager, userManager);
+}
+
 
 app.Run();

@@ -10,5 +10,7 @@ namespace SAS_Record_Management_System.Application.Features.Account.Interfaces
     public interface IstudentAccountRegistration
     {   
         Task AddAsync(StudentAccountRegistrationDTO dto);
+        Task RegisterAccount(StudentAccountRegistrationDTO dto);
+        Task<bool> SignIn(StudentAccountRegistrationDTO dto);
     }
 }

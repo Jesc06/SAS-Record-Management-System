@@ -96,7 +96,7 @@
                             <td>@GetAllAccounts.YearLevel</td>
                             <td>@GetAllAccounts.StudentID</td>
                             <td>
-                                <button type="submit" class="btn btn-success btn-sm ButtonRegister" data-email="@GetAllAccounts.Email" data-password="@GetAllAccounts.Password">
+                                <button type="submit" class="btn btn-success btn-sm ButtonRegister"data-Name="@GetAllAccounts.FirstName" data-Middle="@GetAllAccounts.Middlename" data-lastname="@GetAllAccounts.LastName" data-email="@GetAllAccounts.Email" data-password="@GetAllAccounts.Password">
                                     Register
                                 </button>
                             </td>
@@ -116,20 +116,21 @@
     <div id="ModalBg" class="ModalBg">
         <div id="Modal" class="modal">
             <div class="content">
-                <input asp-for="RegisterStudentAccountViewModel.email"  type="hidden" id="modalEmail" />
-                <input asp-for="RegisterStudentAccountViewModel.password"  type="hidden" id="modalPassword" />
+                <input asp-for="RegisterStudentAccountViewModel.FirstName" type="text" id="modalFirstName" />
+                <input asp-for="RegisterStudentAccountViewModel.MiddleName" type="text" id="modalMiddleName" />
+                <input asp-for="RegisterStudentAccountViewModel.LastName" type="text" id="modalLastName" />
+                <input asp-for="RegisterStudentAccountViewModel.email"  type="text" id="modalEmail" />
+                <input asp-for="RegisterStudentAccountViewModel.password"  type="text" id="modalPassword" />
                 <h1>Are you sure want to Register this account?</h1>
                 <div class="buttons">
                     <button class="btn btn-success btn-lg">Register</button>
-                    <button class="btn btn-dark btn-lg Close">Cancel</button>
+                    <a class="btn btn-dark btn-lg Close">Cancel</a>
                 </div>
             </div>
         </div>
     </div>
  
 </form>
-  
-
 
 
 <script>
@@ -142,9 +143,16 @@
        buttons.forEach(function(button){
            button.onclick = function(){
                 
+              
+                const firstname = button.getAttribute("data-Name");
+                const middlename = button.getAttribute("data-Middle");
+                const lastname = button.getAttribute("data-lastname");
                 const email = button.getAttribute("data-email");
                 const password = button.getAttribute("data-password");
        
+                document.getElementById("modalFirstName").value = firstname;
+                document.getElementById("modalMiddleName").value = middlename;
+                document.getElementById("modalLastName").value = lastname;
                 document.getElementById("modalEmail").value = email;
                 document.getElementById("modalPassword").value = password;
 

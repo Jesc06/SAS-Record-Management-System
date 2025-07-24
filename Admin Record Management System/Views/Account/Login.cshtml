@@ -18,7 +18,7 @@
             <label for="email" class="visually-hidden">Email</label>
             <div class="input-group">
                 <span class="input-group-text" id="email-addon" aria-hidden="true"><i class="bi bi-envelope-fill"></i></span>
-                <input type="email" class="form-control form-control-sm" placeholder="Email" />
+                <input asp-for="email" type="email" class="form-control form-control-sm" placeholder="Email" />
             </div>
             <span asp-validation-for="email" class="text-danger text"></span>
         </div>
@@ -26,7 +26,7 @@
             <label for="password" class="visually-hidden">Password</label>
             <div class="input-group">
                 <span class="input-group-text" id="password-addon" aria-hidden="true"><i class="bi bi-shield-lock-fill"></i></span>
-                <input type="password" class="form-control form-control-sm" placeholder="Password" />
+                <input asp-for="password" type="password" class="form-control form-control-sm" placeholder="Password" />
             </div>
             <span asp-validation-for="email" class="text-danger text"></span>
         </div>

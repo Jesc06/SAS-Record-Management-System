@@ -8,6 +8,8 @@ using SAS_Record_Management_System.Domain.Entities.Account;
 using SAS_Record_Management_System.Infrastructure.Persistence.Data;
 using SAS_Record_Management_System.Application.Features.Account.DTO;
 using SAS_Record_Management_System.Application.Features.Account.Interfaces;
+using Microsoft.AspNetCore.Identity;
+
 
 
 namespace SAS_Record_Management_System.Infrastructure.Features.Account
@@ -16,18 +18,52 @@ namespace SAS_Record_Management_System.Infrastructure.Features.Account
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
-        public StudentAccountRepository(IMapper mapper, ApplicationDbContext context)
+        private readonly UserManager<UserAccountRegistrationCredentials> _userManager;
+        private readonly SignInManager<UserAccountRegistrationCredentials> _signInManager;
+        public StudentAccountRepository(SignInManager<UserAccountRegistrationCredentials> signInManager, UserManager<UserAccountRegistrationCredentials> userManager, IMapper mapper, ApplicationDbContext context)
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
             _mapper = mapper;
         }
           
-        public async Task AddAsync(StudentAccountRegistrationDTO modelDomain)
+        public async Task AddAsync(StudentAccountRegistrationDTO dto)
         {
-            var domain = _mapper.Map<StudentAccountRegistration>(modelDomain);
+            var domain = _mapper.Map<StudentAccountRegistration>(dto);
             await _context.StudentAccountRegistrations_Db.AddAsync(domain);
             await _context.SaveChangesAsync();
         }
+
+
+        public async Task RegisterAccount(StudentAccountRegistrationDTO dto)
+        {
+            UserAccountRegistrationCredentials user = new UserAccountRegistrationCredentials
+            {
+                FirstName = dto.FirstName,
+                Middlename = dto.Middlename,
+                LastName = dto.LastName,
+                Email = dto.Email,
+                UserName = dto.Email
+            };
+
+            var Register = await _userManager.CreateAsync(user,dto.Password);
+            if (Register.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, "Student");
+            }
+        }
+
+
+        public async Task<bool> SignIn(StudentAccountRegistrationDTO dto)
+        {
+            var SignInAccount = await _signInManager.PasswordSignInAsync(dto.Email, dto.Password, true, lockoutOnFailure: false);
+            return SignInAccount.Succeeded;
+        }
+
+
+
+
 
 
     }

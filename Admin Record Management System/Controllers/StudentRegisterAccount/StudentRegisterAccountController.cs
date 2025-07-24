@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SAS_Record_Management_System.Application.Features.Account.DTO;
 using SAS_Record_Management_System.Application.Features.ViewAllStudentAccount.Services;
+using SAS_Record_Management_System.Application.Features.Account.Services;
 using System.Threading.Tasks;
 
 namespace Admin_Record_Management_System.Controllers.StudentRegisterAccount
@@ -9,26 +10,36 @@ namespace Admin_Record_Management_System.Controllers.StudentRegisterAccount
     public class StudentRegisterAccountController : Controller
     {
         private readonly GetAllAccountsServices _getAllAccounts;
+        private readonly StudentAccountRegistrationService _studentAccountRegistrationService;
              
-        public StudentRegisterAccountController(GetAllAccountsServices getAllAccounts)
+        public StudentRegisterAccountController(StudentAccountRegistrationService studentAccountRegistrationService, GetAllAccountsServices getAllAccounts)
         {
             _getAllAccounts = getAllAccounts;
+            _studentAccountRegistrationService = studentAccountRegistrationService;
         }
 
         public async Task<IActionResult> Register()
         {
-            var model = await _getAllAccounts.GetAllAccountsAsync();
-            var map = new AccountsModel
-            {
-                studentAccountRegistrationDTOs = model,
-                RegisterStudentAccountViewModel = new RegisterStudentAccountViewModel()
-            };
-            return View(map);
-        }   
+            AccountsModel model = new AccountsModel();
+            model.studentAccountRegistrationDTOs = await _getAllAccounts.GetAllAccountsAsync();
         
+            return View(model);
+        }
 
+
+        [HttpPost]
         public async Task<IActionResult> RegisterStudentAccount(AccountsModel model)
         {
+            StudentAccountRegistrationDTO registerAccount = new StudentAccountRegistrationDTO{
+                FirstName = model.RegisterStudentAccountViewModel.FirstName,
+                Middlename = model.RegisterStudentAccountViewModel.MiddleName,
+                LastName = model.RegisterStudentAccountViewModel.LastName,
+                Email = model.RegisterStudentAccountViewModel.email,
+                Password = model.RegisterStudentAccountViewModel.password
+            };
+
+            await _studentAccountRegistrationService.RegisterAccount(registerAccount);
+
             model.studentAccountRegistrationDTOs = await _getAllAccounts.GetAllAccountsAsync();
             return View("Register", model);
         }

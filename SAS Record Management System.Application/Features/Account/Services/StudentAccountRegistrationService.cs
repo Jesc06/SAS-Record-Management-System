@@ -18,10 +18,25 @@ namespace SAS_Record_Management_System.Application.Features.Account.Services
         }
 
 
-        public async Task<bool> AddAccount(StudentAccountRegistrationDTO model)
+        public async Task<bool> AddAccount(StudentAccountRegistrationDTO dto)
         {
-            await _studentAccountRegistration.AddAsync(model);
+            await _studentAccountRegistration.AddAsync(dto);
             return true;
+        }
+
+        public async Task RegisterAccount(StudentAccountRegistrationDTO dto)
+        {
+            await _studentAccountRegistration.RegisterAccount(dto);
+        }
+
+        public async Task<bool> SignIn (StudentAccountRegistrationDTO dto)
+        {
+            if(string.IsNullOrEmpty(dto.Email) || string.IsNullOrEmpty(dto.Password))
+            {
+                return false;
+                throw new NullReferenceException("Email ang Password cannot be null!");
+            }
+            return await _studentAccountRegistration.SignIn(dto);
         }
 
 
