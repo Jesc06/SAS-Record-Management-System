@@ -24,9 +24,9 @@ namespace SAS_Record_Management_System.Application.Features.Account.Services
             return true;
         }
 
-        public async Task RegisterAccount(StudentAccountRegistrationDTO dto)
+        public async Task RegisterAccount(StudentAccountRegistrationDTO dto, int Id)
         {
-            await _studentAccountRegistration.RegisterAccount(dto);
+            await _studentAccountRegistration.RegisterAccount(dto, Id);
         }
 
         public async Task<bool> SignIn (StudentAccountRegistrationDTO dto)
@@ -37,6 +37,11 @@ namespace SAS_Record_Management_System.Application.Features.Account.Services
                 throw new NullReferenceException("Email ang Password cannot be null!");
             }
             return await _studentAccountRegistration.SignIn(dto);
+        }
+
+        public async Task Logout()
+        {
+            await _studentAccountRegistration.Logout();
         }
 
 

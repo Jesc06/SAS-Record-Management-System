@@ -28,6 +28,7 @@ namespace SAS_Record_Management_System.Infrastructure.Features.ViewAllStudentAcc
       
             return await _context.StudentAccountRegistrations_Db.Select(x => new StudentAccountRegistrationDTO
             {
+                Id = x.Id,
                 FirstName = x.FirstName,
                 Middlename = x.Middlename,
                 LastName = x.LastName,
@@ -45,6 +46,7 @@ namespace SAS_Record_Management_System.Infrastructure.Features.ViewAllStudentAcc
             }).ToListAsync();
 
         }
+
 
 
     }

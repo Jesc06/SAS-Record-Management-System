@@ -7,7 +7,6 @@ using SAS_Record_Management_System.Application.Features.Account.Services;
 
 namespace Admin_Record_Management_System.Controllers.Account
 {
-    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private readonly StudentAccountRegistrationService _studentAccountRegistrationService;
@@ -18,6 +17,11 @@ namespace Admin_Record_Management_System.Controllers.Account
 
         public IActionResult Login()
         {
+            if(User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("AdminDashboard", "AdminDashboard");
+            }
+
             return View();
         }
 
@@ -43,6 +47,14 @@ namespace Admin_Record_Management_System.Controllers.Account
             } 
         }
 
+
+
+        [HttpPost]
+        public async Task<IActionResult> LogoutAccount()
+        {
+            await _studentAccountRegistrationService.Logout();
+            return RedirectToAction("Login","Account");
+        }
 
 
     }

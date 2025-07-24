@@ -36,7 +36,7 @@ namespace SAS_Record_Management_System.Infrastructure.Features.Account
         }
 
 
-        public async Task RegisterAccount(StudentAccountRegistrationDTO dto)
+        public async Task RegisterAccount(StudentAccountRegistrationDTO dto, int Id)
         {
             UserAccountRegistrationCredentials user = new UserAccountRegistrationCredentials
             {
@@ -48,12 +48,19 @@ namespace SAS_Record_Management_System.Infrastructure.Features.Account
             };
 
             var Register = await _userManager.CreateAsync(user,dto.Password);
+
             if (Register.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, "Student");
-            }
-        }
 
+                var CurrentRegisterAccount = _context.StudentAccountRegistrations_Db.Find(Id);
+                if (CurrentRegisterAccount != null)
+                {
+                    _context.StudentAccountRegistrations_Db.Remove(CurrentRegisterAccount);
+                   await _context.SaveChangesAsync();
+                }
+            }        
+        }
 
         public async Task<bool> SignIn(StudentAccountRegistrationDTO dto)
         {
@@ -62,7 +69,10 @@ namespace SAS_Record_Management_System.Infrastructure.Features.Account
         }
 
 
-
+        public async Task Logout()
+        {
+            await _signInManager.SignOutAsync();
+        }
 
 
 

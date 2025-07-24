@@ -68,11 +68,14 @@
                     </div>
 
                     <!-- POPUP UI -->
-                    <div class="profile-popup d-none" id="logoutPopup">
-                        <a class="logout-btn">
-                            <i class="fas  me-1"></i> Logout
-                        </a>
-                    </div>
+                    <form asp-controller="Account" asp-action="LogoutAccount" method="post">
+                        <div class="profile-popup d-none" id="logoutPopup">
+                            <button class="logout-btn">
+                                <i class="fas  me-1"></i> Logout
+                            </button>
+                        </div>
+                    </form>
+                   
                 </div>
 
             </div>

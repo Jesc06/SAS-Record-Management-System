@@ -30,7 +30,7 @@ namespace Admin_Record_Management_System.Controllers.StudentRegisterAccount
         [HttpPost]
         public async Task<IActionResult> RegisterStudentAccount(AccountsModel model)
         {
-            StudentAccountRegistrationDTO registerAccount = new StudentAccountRegistrationDTO{
+            StudentAccountRegistrationDTO registerAccount = new StudentAccountRegistrationDTO {
                 FirstName = model.RegisterStudentAccountViewModel.FirstName,
                 Middlename = model.RegisterStudentAccountViewModel.MiddleName,
                 LastName = model.RegisterStudentAccountViewModel.LastName,
@@ -38,13 +38,18 @@ namespace Admin_Record_Management_System.Controllers.StudentRegisterAccount
                 Password = model.RegisterStudentAccountViewModel.password
             };
 
-            await _studentAccountRegistrationService.RegisterAccount(registerAccount);
+
+            int RegisteredAccount_Id = model.RegisterStudentAccountViewModel.Id;
+
+            await _studentAccountRegistrationService.RegisterAccount(registerAccount, RegisteredAccount_Id);
 
             model.studentAccountRegistrationDTOs = await _getAllAccounts.GetAllAccountsAsync();
             return View("Register", model);
         }
 
 
+
+     
 
 
 

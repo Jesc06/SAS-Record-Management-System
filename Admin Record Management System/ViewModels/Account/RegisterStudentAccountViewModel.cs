@@ -5,6 +5,8 @@ namespace Admin_Record_Management_System.ViewModels.Account
     public class RegisterStudentAccountViewModel
     {
 
+        public int Id { get; set; } 
+
         [Required(ErrorMessage = "FirstName is required")]
         public string FirstName { get; set; }
 
