@@ -1,12 +1,14 @@
 ﻿using Admin_Record_Management_System.ViewModels.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAS_Record_Management_System.Application.Features.Account.DTO;
-using SAS_Record_Management_System.Application.Features.ViewAllStudentAccount.Services;
 using SAS_Record_Management_System.Application.Features.Account.Services;
+using SAS_Record_Management_System.Application.Features.ViewAllStudentAccount.Services;
 using System.Threading.Tasks;
 
 namespace Admin_Record_Management_System.Controllers.StudentRegisterAccount
 {
+    [Authorize(Roles = "Admin")]
     public class StudentRegisterAccountController : Controller
     {
         private readonly GetAllAccountsServices _getAllAccounts;
@@ -38,10 +40,7 @@ namespace Admin_Record_Management_System.Controllers.StudentRegisterAccount
                 Password = model.RegisterStudentAccountViewModel.password
             };
 
-
-            int RegisteredAccount_Id = model.RegisterStudentAccountViewModel.Id;
-
-            await _studentAccountRegistrationService.RegisterAccount(registerAccount, RegisteredAccount_Id);
+            await _studentAccountRegistrationService.RegisterAccount(registerAccount, model.RegisterStudentAccountViewModel.Id);
 
             model.studentAccountRegistrationDTOs = await _getAllAccounts.GetAllAccountsAsync();
             return View("Register", model);

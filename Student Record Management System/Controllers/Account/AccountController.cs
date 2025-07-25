@@ -20,6 +20,10 @@ namespace Student_Record_Management_System.Controllers.Account
 
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("SubmitDocuments", "Submit");
+            }
             return View();
         }
 
@@ -46,10 +50,33 @@ namespace Student_Record_Management_System.Controllers.Account
 
 
         [HttpPost]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
-            return View(model);
+            StudentAccountRegistrationDTO dto = new StudentAccountRegistrationDTO
+            {
+                Email = model.email,
+                Password = model.password   
+            };
+            var SignIn = await _studentAccountRegistrationService.SignIn(dto);
+            if (SignIn)
+            {
+                return RedirectToAction("SubmitDocuments", "Submit");
+            }
+            else
+            {
+                return View(model);
+            }
+               
         }
+
+
+        public async Task<IActionResult> Logout()
+        {
+            await _studentAccountRegistrationService.Logout();
+            return RedirectToAction("Login","Account");
+        }
+
+
 
     }
 }

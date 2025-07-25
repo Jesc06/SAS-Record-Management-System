@@ -21,7 +21,14 @@ builder.Services.AddScoped<StudentAccountRegistrationService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection")));
 
-builder.Services.AddIdentity<UserAccountRegistrationCredentials, IdentityRole>()
+builder.Services.AddIdentity<UserAccountRegistrationCredentials, IdentityRole>(option => 
+{
+    option.Password.RequireDigit = false;
+    option.Password.RequireLowercase = false;
+    option.Password.RequireUppercase = false;
+    option.Password.RequireNonAlphanumeric = false;
+    option.Password.RequiredLength = 3;
+})
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders()
     .AddRoles<IdentityRole>();

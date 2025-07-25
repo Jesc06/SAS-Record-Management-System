@@ -56,7 +56,7 @@ namespace SAS_Record_Management_System.Infrastructure.Features.Account
                 var CurrentRegisterAccount = _context.StudentAccountRegistrations_Db.Find(Id);
                 if (CurrentRegisterAccount != null)
                 {
-                    _context.StudentAccountRegistrations_Db.Remove(CurrentRegisterAccount);
+                   _context.StudentAccountRegistrations_Db.Remove(CurrentRegisterAccount);
                    await _context.SaveChangesAsync();
                 }
             }        

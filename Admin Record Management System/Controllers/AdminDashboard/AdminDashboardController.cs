@@ -8,7 +8,13 @@ namespace Admin_Record_Management_System.Controllers.Dashboard
     {
         public IActionResult AdminDashboard()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "AdminAccount");
+            }
             return View();
         }
+
+
     }
 }
