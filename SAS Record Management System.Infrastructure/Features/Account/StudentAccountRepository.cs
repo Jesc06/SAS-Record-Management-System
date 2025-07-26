@@ -28,31 +28,32 @@ namespace SAS_Record_Management_System.Infrastructure.Features.Account
             _mapper = mapper;
         }
           
-        public async Task AddAsync(StudentAccountRegistrationDTO dto)
+        public async Task AddAccountAsync(StudentAccountRegistrationDTO dtoAddAccount)
         {
-            var domain = _mapper.Map<StudentAccountRegistration>(dto);
+            var domain = _mapper.Map<StudentAccountRegistration>(dtoAddAccount);
             await _context.StudentAccountRegistrations_Db.AddAsync(domain);
             await _context.SaveChangesAsync();
         }
 
 
-        public async Task RegisterAccount(StudentAccountRegistrationDTO dto, int Id)
+        public async Task RegisterAccount(StudentAccountRegistrationDTO dtoRegister, int Id)
         {
             UserAccountRegistrationCredentials user = new UserAccountRegistrationCredentials
             {
-                FirstName = dto.FirstName,
-                Middlename = dto.Middlename,
-                LastName = dto.LastName,
-                Email = dto.Email,
-                UserName = dto.Email
+                FirstName = dtoRegister.FirstName,
+                Middlename = dtoRegister.Middlename,
+                LastName = dtoRegister.LastName,
+                Email = dtoRegister.Email,
+                UserName = dtoRegister.Email
             };
 
-            var Register = await _userManager.CreateAsync(user,dto.Password);
+            var Register = await _userManager.CreateAsync(user, dtoRegister.Password);
 
             if (Register.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, "Student");
 
+                //Remove Account from StudentRegistration table in admin after successfully transfer data into Asp.Net Users
                 var CurrentRegisterAccount = _context.StudentAccountRegistrations_Db.Find(Id);
                 if (CurrentRegisterAccount != null)
                 {
@@ -62,11 +63,27 @@ namespace SAS_Record_Management_System.Infrastructure.Features.Account
             }        
         }
 
-        public async Task<bool> SignIn(StudentAccountRegistrationDTO dto)
+
+
+        public async Task<bool> SignIn(StudentAccountRegistrationDTO dtoSignIn)
         {
-            var SignInAccount = await _signInManager.PasswordSignInAsync(dto.Email, dto.Password, true, lockoutOnFailure: false);
+            var SignInAccount = await _signInManager.PasswordSignInAsync(dtoSignIn.Email, dtoSignIn.Password, true, lockoutOnFailure: false);
             return SignInAccount.Succeeded;
         }
+
+
+        public async Task<bool> VerifyEmail(StudentAccountRegistrationDTO dtoVerify)
+        {
+            var user = await _userManager.FindByNameAsync(dtoVerify.Email);
+            return true;
+        }
+
+
+        public async Task<bool> ChangePassword(StudentAccountRegistrationDTO dtoChangepass)
+        {
+            return true;
+        }
+
 
 
         public async Task Logout()

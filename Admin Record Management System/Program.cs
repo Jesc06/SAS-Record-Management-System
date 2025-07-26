@@ -59,7 +59,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name:"default",
-    pattern:"{controller=AdminAccount}/{action=Login}/{id?}"
+    pattern: "{controller=VerifyEmail}/{action=VerifyEmail}/{id?}"
 );
 
 

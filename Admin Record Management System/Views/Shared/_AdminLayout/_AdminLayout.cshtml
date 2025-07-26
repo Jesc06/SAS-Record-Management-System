@@ -69,10 +69,15 @@
 
                     <!-- POPUP UI -->
                     <form asp-controller="AdminAccount" asp-action="LogoutAccount" method="post">
-                        <div class="profile-popup d-none" id="logoutPopup">
-                            <button class="logout-btn">
-                                <i class="fas  me-1"></i> Logout
-                            </button>
+                        <div class="profile-popup d-none content" id="logoutPopup">
+                          
+                                <button class="logout-btn">
+                                    <i class="fas  me-1"></i> Logout
+                                </button>
+                                <a asp-controller="VerifyEmail" asp-action="VerifyEmail">
+                                    Change Password
+                                </a>
+                        
                         </div>
                     </form>
                    

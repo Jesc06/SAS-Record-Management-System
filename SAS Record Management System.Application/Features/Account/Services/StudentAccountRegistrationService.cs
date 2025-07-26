@@ -17,10 +17,9 @@ namespace SAS_Record_Management_System.Application.Features.Account.Services
             _studentAccountRegistration = studentAccountRegistration;
         }
 
-
         public async Task<bool> AddAccount(StudentAccountRegistrationDTO dto)
         {
-            await _studentAccountRegistration.AddAsync(dto);
+            await _studentAccountRegistration.AddAccountAsync(dto);
             return true;
         }
 
@@ -38,6 +37,19 @@ namespace SAS_Record_Management_System.Application.Features.Account.Services
             }
             return await _studentAccountRegistration.SignIn(dto);
         }
+
+
+        public async Task<bool> VerifyEmail(StudentAccountRegistrationDTO verifyEmail)
+        {
+            if(verifyEmail.Email == null)
+            {
+                return false;
+            }
+            var Verify = await _studentAccountRegistration.VerifyEmail(verifyEmail);
+            return true;
+            
+        }
+
 
         public async Task Logout()
         {

@@ -55,17 +55,6 @@
 }
 
 
-.content{
-    width:600px;
-    height:400px;
-    background-color:white;
-    border-radius:5px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-
     .content h1 {
         position: absolute;
         width: 360px;

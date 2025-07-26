@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout/_AdminLayout.cshtml";
+}
+@model VerifyEmailViewModel;
+<head>
+    <link rel="stylesheet" href="~/css/ChangePassword/ChangePassword.css" asp-append-version="true" />
+</head>
+
+
+
+<form asp-controller="VerifyEmail" asp-action="CheckIfEmailIsExist" method="post">
+    <div class="card">
+        <input asp-for="Email" type="text" placeholder="Email" />
+        <button>Verify Email</button>
+    </div>
+</form>

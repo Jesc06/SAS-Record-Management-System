@@ -24,5 +24,7 @@ namespace SAS_Record_Management_System.Application.Features.Account.DTO
         public string YearLevel { get; set; }
         public string StudentID { get; set; }
         public string Password { get; set; }
+        public string ChangePassword { get; set; }
+
     }
 }
