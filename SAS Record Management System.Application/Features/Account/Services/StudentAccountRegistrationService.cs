@@ -41,13 +41,12 @@ namespace SAS_Record_Management_System.Application.Features.Account.Services
 
         public async Task<bool> VerifyEmail(StudentAccountRegistrationDTO verifyEmail)
         {
-            if(verifyEmail.Email == null)
-            {
-                return false;
-            }
             var Verify = await _studentAccountRegistration.VerifyEmail(verifyEmail);
-            return true;
-            
+            if (Verify)
+            {
+                return true;
+            }
+            return false;
         }
 
 

@@ -64,7 +64,6 @@ namespace SAS_Record_Management_System.Infrastructure.Features.Account
         }
 
 
-
         public async Task<bool> SignIn(StudentAccountRegistrationDTO dtoSignIn)
         {
             var SignInAccount = await _signInManager.PasswordSignInAsync(dtoSignIn.Email, dtoSignIn.Password, true, lockoutOnFailure: false);
@@ -75,8 +74,13 @@ namespace SAS_Record_Management_System.Infrastructure.Features.Account
         public async Task<bool> VerifyEmail(StudentAccountRegistrationDTO dtoVerify)
         {
             var user = await _userManager.FindByNameAsync(dtoVerify.Email);
+            if(user == null)
+            {
+                return false;
+            }
             return true;
         }
+
 
 
         public async Task<bool> ChangePassword(StudentAccountRegistrationDTO dtoChangepass)
